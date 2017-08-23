@@ -150,6 +150,8 @@ class HAProxyMetrics < Sensu::Plugin::Metric::CLI::Graphite
       end
 
       if line[1] == 'BACKEND'
+        output "#{config[:scheme]}.#{line[0]}.queue_current", line[2]
+        output "#{config[:scheme]}.#{line[0]}.queue_max", line[3]
         output "#{config[:scheme]}.#{line[0]}.session_current", line[4]
         output "#{config[:scheme]}.#{line[0]}.session_total", line[7]
         output "#{config[:scheme]}.#{line[0]}.bytes_in", line[8]
